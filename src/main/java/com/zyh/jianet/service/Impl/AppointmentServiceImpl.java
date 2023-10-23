@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
-    final static int MAX_APPOINTMENT = 50;
+    final static int MAX_APPOINTMENT = 9999;
     final AppointmentMapper appointmentMapper;
 
     public AppointmentServiceImpl(AppointmentMapper appointmentMapper) {
@@ -33,12 +33,12 @@ public class AppointmentServiceImpl implements AppointmentService {
     public Status<Integer> createAppointment(Appointment appointment, String Token) {
         int count = appointmentMapper.selectAppointmentCountByTime(appointment);
         if (count >= MAX_APPOINTMENT) {
-            return new Status<Integer>(false, "预约已满", null);
+            return new Status<>(false, "预约已满", null);
         }
         int id = JwtUntil.parseJWT(Token).get("id", Integer.class);
         appointment.setUserId(id);
         appointment.setStatus(0);
-        return new Status<Integer>(true, "预约成功",appointmentMapper.insertAppointment(appointment));
+        return new Status<>(true, "预约成功", appointmentMapper.insertAppointment(appointment));
     }
 
 }

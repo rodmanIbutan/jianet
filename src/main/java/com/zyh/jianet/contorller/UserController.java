@@ -17,9 +17,9 @@ public class UserController {
     public Status<User> login (@RequestBody User user){
         return userService.login(user);
     }
-    @GetMapping(value = "/hello")
+    @PostMapping(value = "changePwd")
     @ResponseBody
-    public String hello(){
-        return "hello world";
+    public Status<User> changePwd(@RequestParam("oPassword") String oPassword,@RequestParam("nPassword") String nPassword,@RequestParam("number") String number){
+        return userService.changePwd(oPassword,nPassword,number);
     }
 }

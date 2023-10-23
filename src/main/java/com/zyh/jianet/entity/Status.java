@@ -19,17 +19,6 @@ public class Status<T> {
             this.success = false;
         }
     }
-    public Status(boolean success, String msg){
-        if (success){
-            this.code = 200;
-            this.msg = msg;
-            this.success = true;
-        }else {
-            this.code = 500;
-            this.msg = msg;
-            this.success = false;
-        }
-    }
     public Status(boolean success, String msg, T data){
         if (success){
             this.code = 200;
