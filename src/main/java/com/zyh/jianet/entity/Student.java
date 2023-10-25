@@ -4,12 +4,16 @@ import lombok.Data;
 
 @Data
 public class Student {
-    //id,name,number,password,class_code,score
     private Integer id;
     private String name;
     private String number;
-    private String password;
-    private Integer class_code;
+    private int classId;
+    private String className;
+    private int collegeId;
+    private String collegeName;
     private Integer score;
+    private int bCollegeScore;
+    private int cCollegeScore;
+    private int status;
 
 }

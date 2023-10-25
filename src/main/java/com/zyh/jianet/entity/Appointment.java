@@ -7,7 +7,7 @@ import java.util.Date;
 public class Appointment {
     private int id;
     private int spaceId;
-    private int userId;
+    private String userNumber;
     private String bookingDate;
     private int bookingTime;
     private Integer status;

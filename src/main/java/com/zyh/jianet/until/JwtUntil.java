@@ -13,7 +13,7 @@ public class JwtUntil {
      * @param claims 保存的内容
      * @return jwt令牌
      */
-    public static String generateJwt(int claims) {
+    public static String generateJwt(String claims) {
         return Jwts.builder()
                 .claim("id",claims)
                 .signWith(SignatureAlgorithm.HS256, KEY)

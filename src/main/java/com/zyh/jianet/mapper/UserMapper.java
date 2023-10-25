@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     User selectUserByNumber(@Param("number") String number);
-    User upDateUserPwd(@Param("password") String passWord,@Param("id") int id);
+    User upDateUserPwd(@Param("password") String passWord,@Param("number") String number);
 }

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 @Mapper
 public interface AppointmentMapper {
-    List<Appointment> selectAppointmentsByUserId(@Param("userId") Integer userId);
+    List<Appointment> selectAppointmentsByUserId(@Param("userNumber") String number);
     Appointment selectAppointmentById(@Param("id") Integer id);
     Integer insertAppointment(Appointment appointment);
     Integer updateAppointment(Appointment appointment);

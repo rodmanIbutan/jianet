@@ -16,7 +16,7 @@ import java.io.IOException;
 @Component
 @WebFilter(urlPatterns = "/*")
 public class LoginFilter implements Filter {
-    private final String[] URL = {"/user/login","/img","/card/getById"};
+    private final String[] URL = {"/user/login","/img"};
     private final String TOKEN = "token";
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)throws IOException, ServletException{
@@ -36,18 +36,18 @@ public class LoginFilter implements Filter {
         }
         String token = request.getHeader(TOKEN);
         if (token == null){
-            error(response,"请先登录");
+            error(response,"请先登录",501);
             return;
         }
         try {
             JwtUntil.parseJWT(token);
             filterChain.doFilter(servletRequest,servletResponse);
         }catch (Exception e){
-            error(response, String.valueOf(e));
+            error(response, "登录过期，请重新登录",502);
         }
     }
-    private void error(HttpServletResponse response,String message) throws IOException{
-        Status status = new Status(false,501,message,null);
+    private void error(HttpServletResponse response,String message,int code) throws IOException{
+        Status status = new Status(false,code,message,null);
         String error = JSONObject.toJSONString(status);
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(error);

@@ -5,6 +5,6 @@
         select * from jn_user where number = #{number} and status = 0
     </select>
     <update id="upDateUserPwd">
-        update jn_user set password = #{password} where id=#{id}
+        update jn_user set password = #{password} where number=#{number}
     </update>
 </mapper>

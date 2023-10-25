@@ -28,7 +28,12 @@ public class AppointmentController {
     }
     @GetMapping(value = "/getById")
     @ResponseBody
-    public Status<Appointment> getAppointmentById(@RequestParam Integer id) {
-        return appointmentService.getAppointmentById(id);
+    public Status<Appointment> getAppointmentById(@RequestParam Integer id,@RequestHeader("token") String token) {
+        return appointmentService.getAppointmentById(id,token);
+    }
+    @GetMapping(value = "/delete")
+    @ResponseBody
+    public Status<Integer> deleteAppointment(@RequestParam Integer id,@RequestHeader("token") String token) {
+        return appointmentService.deleteAppointment(id,token);
     }
 }
