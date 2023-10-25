@@ -5,7 +5,9 @@ import com.zyh.jianet.entity.Student;
 import com.zyh.jianet.mapper.StudentMapper;
 import com.zyh.jianet.service.StudentService;
 import com.zyh.jianet.until.JwtUntil;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StudentServiceImpl implements StudentService {
     final StudentMapper studentMapper;
 
