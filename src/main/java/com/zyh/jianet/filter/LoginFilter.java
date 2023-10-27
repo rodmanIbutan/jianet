@@ -40,6 +40,7 @@ public class LoginFilter implements Filter {
             return;
         }
         try {
+            // TODO: 2023/10/25 请求头token验证是否过期
             JwtUntil.parseJWT(token);
             filterChain.doFilter(servletRequest,servletResponse);
         }catch (Exception e){
