@@ -31,7 +31,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Status<Integer> createAppointment(Appointment appointment, String Token) {
-        // TODO: 2023/10/25 禁止重复预约
+        String userNumber = JwtUntil.parseJWT(Token).get("number", String.class);
+        int spaceId = appointmentMapper.selectUserSpaceId(userNumber);
+        if (appointmentMapper.selectAppointmentCountByUserid(userNumber,spaceId)>0){
+            return new Status<>(false,"该学院已有预约记录",null);
+        } else if (appointment.getSpaceId()!=spaceId || appointment.getSpaceId()!=1) {
+            return new Status<>(false,"预约空间错误",null);
+        }
         int count = appointmentMapper.selectAppointmentCountByTime(appointment);
         if (count >= MAX_APPOINTMENT) {
             return new Status<>(false, "预约已满", null);

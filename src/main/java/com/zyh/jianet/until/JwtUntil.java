@@ -15,7 +15,7 @@ public class JwtUntil {
      */
     public static String generateJwt(String claims) {
         return Jwts.builder()
-                .claim("id",claims)
+                .claim("number",claims)
                 .signWith(SignatureAlgorithm.HS256, KEY)
                 .setExpiration(new Date(System.currentTimeMillis() + 365 * 24 * 60 * 60 *1000L))
                 .compact();

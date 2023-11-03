@@ -7,4 +7,7 @@
     <update id="upDateUserPwd">
         update jn_user set password = #{password} where number=#{number}
     </update>
+    <update id="updateToken">
+        update jn_user set token = #{token} where number=#{number} and status = 0
+    </update>
 </mapper>

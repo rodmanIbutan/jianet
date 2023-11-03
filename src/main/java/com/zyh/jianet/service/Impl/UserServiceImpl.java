@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
         } else if (user1.getPassword().equals(user.getPassword())) {
             String jwt = JwtUntil.generateJwt(user1.getNumber());
             user1.setToken(jwt);
+            userMapper.updateToken(jwt,user1.getNumber());
             return new Status<>(true, "登录成功", user1);
         } else {
             return new Status<>(false, "账号或者密码错误", null);

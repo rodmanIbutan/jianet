@@ -20,4 +20,10 @@
     <select id="selectAppointmentCountByTime" parameterType="com.zyh.jianet.entity.Appointment" resultType="int">
         select count(*) from jn_appointment where status=0 and space_id=#{spaceId} and booking_date=#{bookingDate} and booking_time=#{bookingTime}
     </select>
+    <select id="selectAppointmentCountByUserid" resultType="Integer">
+        select count(*) from jn_appointment where user_number=#{userNumber} and status!=3 and space_id=#{spaceId}
+    </select>
+    <select id="selectUserSpaceId" resultType="int">
+        select space_id from jn_student left join jn_college on jn_student.college_id=jn_college.id where jn_student.number=#{userNumber}
+    </select>
 </mapper>

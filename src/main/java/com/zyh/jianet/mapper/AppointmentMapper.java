@@ -13,4 +13,6 @@ public interface AppointmentMapper {
     Integer updateAppointment(Appointment appointment);
     Integer deleteAppointment(@Param("id") Integer id);
     int selectAppointmentCountByTime(Appointment appointment);
+    int selectAppointmentCountByUserid(@Param("userNumber") String userId,@Param("spaceId") Integer spaceId);
+    int selectUserSpaceId(@Param("userNumber") String userNumber);
 }
