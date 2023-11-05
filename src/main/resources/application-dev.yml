@@ -2,8 +2,6 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: prod
   application:
     name: jianet
   session:
@@ -16,8 +14,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/jianet?serverTimezone=UTC&useSSL=false
-    username: jianet
-    password: xD3EnX6YYNnmBHKx
+    username: root
+    password: Zyh20011216
   data:
     redis:
       host: 127.0.0.1
